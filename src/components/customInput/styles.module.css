@@ -1,0 +1,8 @@
+/* Styles for Label on custom input */
+.label {
+    @apply font-[600] text-[1rem] lg:text-[1.2rem] leading-[120%];
+  }
+  
+.input{
+    @apply px-[1rem] py-[0.90625rem] lg:text-[1rem] outline-none  w-full border border-[rgba(0,0,0,0.25)] rounded-[0.5rem] h-[48px];
+}
