@@ -33,3 +33,11 @@ export interface TextAreaPropsI {
   placeHolder?: string;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 }
+
+export interface SelectPropsI {
+  id?: string;
+  defaultValue: string;
+  itemsList: string[];
+  label?: string;
+  labelStyles?: string;
+}

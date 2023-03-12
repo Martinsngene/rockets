@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body{
-    background-color: red;
-} */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Poppins, sans-serif !important;
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 3px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Card Container Alignment */
+.align-cards{
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 h-fit;
+}
+
+/* Center an item with flexbox */
+.flex-center{
+  @apply flex items-center justify-center w-full;
+}

@@ -4,5 +4,5 @@
   }
   
 .input{
-    @apply px-[1rem] py-[0.90625rem] lg:text-[1rem] outline-none  w-full border border-[rgba(0,0,0,0.25)] rounded-[0.5rem] h-[48px];
+    @apply px-4 py-4 lg:text-[1rem] outline-none  w-full border border-[rgba(0,0,0,0.25)] rounded-[0.5rem] h-[30px];
 }

@@ -14,7 +14,7 @@ const Card = ({
   return (
     <div className={`${styles.container} ${className}`}>
       <div className={styles.cardImgContainer}>
-        <img src={imgUrl} alt='' />
+        <img src={imgUrl} className={styles.img} alt='' />
       </div>
       <div className={styles.name}>{name}</div>
       <div className={styles.cardDescriptionContainer}>

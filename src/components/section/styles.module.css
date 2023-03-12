@@ -1,5 +1,5 @@
 .container{
-  @apply w-full h-full overflow-y-auto px-4 lg:px-[3rem] py-[1rem] border-[1px] border-black rounded-[0.5rem];
+  @apply w-full h-full overflow-y-auto px-4 lg:px-[3rem] py-[1rem];
     scroll-snap-align: start;
 }
 

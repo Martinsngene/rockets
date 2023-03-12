@@ -5,7 +5,11 @@
 
 /* Card Image Container */
 .cardImgContainer{
-  @apply  relative w-full h-[150px] sm:h-[100px] lg:h-[150px] xl:h-[220px] lg:w-full flex  items-center justify-center;
+  @apply  w-full h-[150px] sm:h-[100px] lg:h-[150px] xl:h-[220px] lg:w-full flex  items-center justify-center;
+}
+
+.img{
+    @apply w-full h-[150px] sm:h-[100px] lg:h-[150px] xl:h-[220px] lg:w-full
 }
 
 /* Name */
