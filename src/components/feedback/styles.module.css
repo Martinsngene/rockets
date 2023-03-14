@@ -1,0 +1,7 @@
+.container{
+@apply w-full h-full flex items-center justify-center;
+}
+
+.photo{
+    @apply w-[150px] sm:w-[250px] md:w-[300px] -translate-y-[-120%] md:-translate-y-[-75%]
+}

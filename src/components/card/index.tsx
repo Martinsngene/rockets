@@ -1,30 +1,12 @@
 /** @format */
 
-import { CardPropsI } from "../interface";
+import { GlobalPropsI } from "../interface";
 import styles from "./styles.module.css";
 
-const Card = ({
-  name,
-  description,
-  imgUrl,
-  linkLabel,
-  link,
-  className,
-}: CardPropsI) => {
+const Card = ({ children }: GlobalPropsI) => {
   return (
-    <div className={`${styles.container} ${className}`}>
-      <div className={styles.cardImgContainer}>
-        <img src={imgUrl} className={styles.img} alt='' />
-      </div>
-      <div className={styles.name}>{name}</div>
-      <div className={styles.cardDescriptionContainer}>
-        <p>{description}</p>
-      </div>
-      <div className={styles.cardLinkContainer}>
-        <a href={`${link}`} target='_blank' className={styles.cardLink}>
-          <span>{linkLabel}</span>
-        </a>
-      </div>
+    <div className='row-start-2 row-span-2 even:row-start-1 even:row-end-4 w-[300px] h-[350px] rounded-md border border-[#aaa]'>
+      {children}
     </div>
   );
 };

@@ -27,3 +27,7 @@
 .capsules{
   @apply h-full py-4
 }
+
+.rockets{
+  @apply w-full md:w-[300px] h-[250px] md:h-[230px] rounded-md
+}

@@ -41,3 +41,7 @@ export interface SelectPropsI {
   label?: string;
   labelStyles?: string;
 }
+
+export interface FeedBackPropsI {
+  feedbackImage: string;
+}
