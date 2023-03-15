@@ -1,10 +1,14 @@
 /** @format */
 
 export interface GlobalPropsI {
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
   header?: string;
   showHeader?: boolean;
   children: React.ReactNode;
   className?: string;
+  isLoading?: boolean;
+  isError?: boolean;
+  isSuccess?: boolean;
 }
 
 export interface CardPropsI {
@@ -21,7 +25,9 @@ export interface InputPropsI {
   id?: string;
   htmlFor?: string;
   type?: string;
+  inputValue?: string;
   placeHolder?: string;
+  containerStyles?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -40,6 +46,7 @@ export interface SelectPropsI {
   itemsList: string[];
   label?: string;
   labelStyles?: string;
+  containerStyles?: string;
 }
 
 export interface FeedBackPropsI {

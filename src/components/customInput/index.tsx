@@ -9,10 +9,12 @@ const Input = ({
   id,
   type,
   placeHolder,
+  containerStyles,
+  inputValue,
   onChange,
 }: InputPropsI) => {
   return (
-    <div>
+    <div className={containerStyles}>
       <label className={styles.label} htmlFor={htmlFor}>
         {label}
       </label>
@@ -22,6 +24,7 @@ const Input = ({
         type={type}
         onChange={onChange}
         placeholder={placeHolder}
+        value={inputValue}
       />
     </div>
   );

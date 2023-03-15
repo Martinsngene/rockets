@@ -1,69 +1,109 @@
 /** @format */
 
+import { useState } from "react";
+import { useQuery } from "react-query";
+
 import Section from "./components/section";
 import styles from "./App.module.css";
 import Layout from "./components/layout";
 import Input from "./components/customInput";
 import Select from "./components/customSelect";
-import { useQuery } from "react-query";
 import Card from "./components/card";
-import FeedBack from "./components/feedback";
+import { filterDataFromSearch, getRockets } from "./utils";
 
 const App = () => {
   const filters = ["status", "original launch", "type"];
 
-  const { isLoading, isError, data } = useQuery("getRockets", async () => {
-    const rockets = await (
-      await fetch(`http://localhost:3000/server/index.php`)
-    ).json();
-    return rockets;
-  });
+  // useState Hook to manage the state of the search input field
+  const [searchVal, setSearchVal] = useState("");
 
-  console.log(data);
+  // Query to get data from PHP server
+  const { isLoading, isError, data } = useQuery("getRockets", getRockets);
 
-  if (isLoading) {
-    return <FeedBack feedbackImage='/loading.gif' />;
-  }
+  let search = true;
 
-  if (isError) {
-    return <FeedBack feedbackImage='/error.gif' />;
-  }
+  const queryStates = {
+    isLoading: isLoading,
+    isError: isError,
+  };
 
   return (
-    <Layout>
+    <Layout {...queryStates}>
       <Section>
+        {/* Home Section to welcome users */}
         <div id='home' className={styles.home}>
-          <Info />
-          <Photo />
-        </div>
-        <div id='find_capsules' className={styles.findCapsules}>
-          Find Capsules
-          <div>
-            <div>
-              <Input
-                htmlFor='search'
-                label='Search'
-                id='search'
-                type='text'
-                placeHolder='Find a capsule'
-              />
-              <Select
-                id='select'
-                label='Filters'
-                defaultValue='Type'
-                itemsList={filters}
-              />
-            </div>
+          <div className={styles.info}>
+            <h1 className={styles.welcome}>Welcome to SpaceX</h1>
+            <p className={styles.welcome}>where innovation meets science.</p>
+          </div>
+          <div className={styles.photoContainer}>
+            <img
+              src='/home_rocket.jpg'
+              className={styles.photo}
+              alt='Home Rocket'
+            />
           </div>
         </div>
+        {/* Search for a Rocket or a Capsule */}
+        <div id='find_capsules' className={styles.findCapsules}>
+          <h2>Find Capsules</h2>
+          <div className={styles.searchFilter}>
+            <Input
+              htmlFor='search'
+              label='Search'
+              id='search'
+              type='text'
+              placeHolder='Find a capsule'
+              containerStyles='w-[50%]'
+              onChange={(e) => setSearchVal(e.target.value)}
+            />
+            <Select
+              id='select'
+              label='Filters'
+              defaultValue='Type'
+              itemsList={filters}
+              containerStyles='w-[50%]'
+            />
+          </div>
+          <div className='flex-center flex-col'>
+            {searchVal === "" ? (
+              <div className={styles.searchResults}>
+                <img
+                  src={search ? "/search.gif" : "/search-not-found.gif"}
+                  alt='Search Rockets'
+                  className={styles.searchImage}
+                />
+                <h3 className={styles.searchText}>
+                  {search ? "Search for Rockets" : "No results found"}
+                </h3>
+              </div>
+            ) : (
+              <div className='flex mt-6 md:mt-16'>
+                {filterDataFromSearch(data, searchVal).map(
+                  (rocket: any, index: number) => {
+                    return (
+                      <Card key={index}>
+                        <img
+                          src={rocket.flickr_images[0]}
+                          className={styles.rockets}
+                          alt='Rockets'
+                        />
+                      </Card>
+                    );
+                  }
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+        {/* Data Grid For Rockets */}
         <div id='capsules' className={styles.capsules}>
-          Capsules
+          Rockets
           <div className='flex-center'>
             <div className='align-cards'>
-              {/* <div className='grid grid-cols-2 gap-6 mt-[2rem] bg-red-500'> */}
-              {data.map((rocket: any, index: number) => {
+              {data?.map((rocket: any, index: number) => {
                 return (
-                  <Card key={index}>
+                  <Card onClick={() => alert("Hi")} key={index}>
                     <img
                       src={rocket.flickr_images[0]}
                       className={styles.rockets}
@@ -73,43 +113,11 @@ const App = () => {
                 );
               })}
             </div>
-            {/* </div> */}
           </div>
         </div>
-
-        {/* <div className='grid grid-rows-3 grid-flow-col gap-4'>
-          <div className='row-start-2 row-span-2 bg-blue-500 h-[100px]'>01</div>
-          <div className='row-end-3 row-span-2 bg-blue-500'>02</div>
-          <div className='row-start-1 row-end-4 bg-blue-500'>03</div>
-        </div> */}
-        {/* <div className='grid grid-rows-3 grid-flow-col-3 gap-4 mt-[2rem]'></div>
-        <div className='grid grid-rows-3 grid-flow-col gap-4 mt-[2rem]'></div>
-        <div className='grid grid-rows-3 grid-flow-col gap-4 mt-[2rem]'></div> */}
-
-        {/* <div className='grid grid-rows-3 grid-flow-col gap-4 mt-[2rem]'>
-          <div className='row-start-1 row-end-4 bg-blue-500'>03</div>
-          <div className='row-end-3 row-span-2 bg-blue-500'>02</div>
-          <div className='row-start-2 row-span-2 bg-blue-500 h-[100px]'>01</div>
-        </div> */}
       </Section>
     </Layout>
   );
 };
 
-const Photo = () => {
-  return (
-    <div className={styles.photoContainer}>
-      <img src='/home_rocket.jpg' className={styles.photo} alt='Home Rocket' />
-    </div>
-  );
-};
-
-const Info = () => {
-  return (
-    <div className={styles.info}>
-      <h1 className={styles.welcome}>Welcome to SpaceX</h1>
-      <p className={styles.welcome}>where innovation meets science.</p>
-    </div>
-  );
-};
 export default App;

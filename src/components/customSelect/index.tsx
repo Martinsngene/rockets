@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
 import { SelectPropsI } from "../interface";
 

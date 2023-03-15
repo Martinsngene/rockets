@@ -1,38 +1,39 @@
-/* Container styles */
-.container{
-    @apply w-full
+/**
+ * Container styles
+ *
+ * @format
+ */
+
+.container {
+  @apply w-full relative;
 }
 
 /* Dropdown Styles */
-.dropDown{
-    @apply flex items-center justify-between w-full h-[15px] border border-[rgba(0,0,0,0.25)] rounded-lg px-6 py-6;
+.dropDown {
+  @apply flex items-center justify-between w-full h-[15px] border border-[rgba(0,0,0,0.25)] rounded-lg px-6 py-6;
 }
 
 /*Select Button Styles */
-.selectBtn{
-    @apply relative w-4 h-4
+.selectBtn {
+  @apply relative w-4 h-4;
 }
 
 /* Select Items Styles */
-.itemContainer{
-    @apply w-full h-auto bg-white border-[0.5px] py-4 px-6 rounded-[0.625rem];
-    box-shadow: 0px 4px 18px rgba(236, 134, 39, 0.1);
+.itemContainer {
+  @apply absolute w-full h-auto bg-white border-[0.5px] py-4 px-6 rounded-[0.625rem];
+  box-shadow: 0px 4px 18px rgba(236, 134, 39, 0.1);
 }
 
-.currentItem, .item{
-    @apply font-[400] leading-[120%] text-[#333]
+.currentItem,
+.item {
+  @apply font-[400] leading-[120%] text-[#333];
 }
 
-/* .currentItem{
-    @apply
-} */
-
-.item{
-    @apply cursor-pointer text-[1.25rem] mb-4
+.item {
+  @apply cursor-pointer text-[1.25rem] mb-4;
 }
 
 /* Styles for Label on custom input */
 .label {
-    @apply font-[500] text-[1rem] text-[#1A1A1A] leading-[120%];
-  }
-  
+  @apply font-[500] text-[1rem] text-[#1A1A1A] leading-[120%];
+}

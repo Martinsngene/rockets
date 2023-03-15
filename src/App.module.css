@@ -1,33 +1,51 @@
-.container{
-  @apply h-[60vh] 
+/** @format */
+
+.container {
+  @apply h-[60vh];
 }
-.photo{
-  @apply w-full h-[250px] md:h-[450px] rounded-[20%] mt-4 md:mt-0
+.photo {
+  @apply w-full h-[250px] md:h-[450px] rounded-[20%] mt-4 md:mt-0;
 }
-.photoContainer{
+.photoContainer {
   @apply w-full lg:w-[40%] flex items-center justify-center;
 }
 
-.info{
-  @apply w-full lg:w-[55%]
+.info {
+  @apply w-full lg:w-[55%];
 }
 
-.home{
+.home {
   @apply h-full py-4 lg:h-full flex flex-col lg:flex-row items-center justify-center xl:justify-around;
 }
 
-.welcome{
+.welcome {
   @apply text-[1.5rem] lg:text-[3rem] text-center font-bold;
 }
 
-.findCapsules{
-  @apply h-full py-4
+.findCapsules {
+  @apply h-full py-4 my-4;
 }
 
-.capsules{
-  @apply h-full py-4
+.searchFilter {
+  @apply w-full flex items-center justify-between;
 }
 
-.rockets{
-  @apply w-full md:w-[300px] h-[250px] md:h-[230px] rounded-md
+.searchResults {
+  @apply flex flex-col items-center justify-center;
+}
+
+.searchImage {
+  @apply w-[100px] sm:w-[300px] md:w-[400px] h-[100px] sm:h-[300px] md:h-[400px] rounded-md;
+}
+
+.searchText {
+  @apply font-bold text-[1.5rem] mt-2;
+}
+
+.capsules {
+  @apply h-full py-4;
+}
+
+.rockets {
+  @apply w-full md:w-[300px] h-[250px] md:h-[230px] rounded-md;
 }
